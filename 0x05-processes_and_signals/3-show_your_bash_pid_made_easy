@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# script show the the pid in easy way
+
+pgrep bash -l
