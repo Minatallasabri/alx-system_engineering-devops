@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# scripting show the list of proccess
+
+ps -auxf
