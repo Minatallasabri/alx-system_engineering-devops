@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Install nginx web server 
-# Configure your Nginx server so that /redirect_me is redirecting to another page.
 
+# Install nginx web server if not already installed
 if ! command -v nginx &> /dev/null
 then
     sudo apt -y update
@@ -10,6 +9,16 @@ then
     echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 fi
 
-replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
-sudo sed -i "s/server_name _;/$replacement/" /etc/nginx/sites-enabled/default
+# Add the rewrite rule to the Nginx configuration
+redirect_rule="location /redirect_me {
+    return 301 https://www.google.com;
+}"
+
+# Check if the rule already exists in the config
+if ! grep -q "location /redirect_me" /etc/nginx/sites-available/default
+then
+    sudo sed -i "/server_name _;/a $redirect_rule" /etc/nginx/sites-available/default
+fi
+
+# Restart Nginx
 sudo service nginx restart
