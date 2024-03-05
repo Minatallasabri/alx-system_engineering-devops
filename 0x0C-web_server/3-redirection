@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Configure Nginx server to redirect /redirect_me to another page with a 301 Moved Permanently
 
 # Update package repositories
