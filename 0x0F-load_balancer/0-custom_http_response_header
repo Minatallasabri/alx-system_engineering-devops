@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
-# Set hostname in nginx headers
+# Install nginx web server 
+if ! command -v nginx &> /dev/null
+then
+    sudo apt -y update
+    sudo apt install nginx -y
+    sudo ufw allow 'Nginx HTTP'
+    echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+fi
 
-sudo apt-get install nginx -y
-sed -i "15i\add_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+replacement="server_name _;\n\tadd_header X-Served-By \$hostname;\n"
+sudo sed -i "s/server_name _;/$replacement/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
