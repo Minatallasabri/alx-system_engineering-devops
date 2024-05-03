@@ -41,7 +41,7 @@ frontend clickviral-tech-frontend
 backend clickviral-tech-backend
     balance roundrobin
 	server 493999-web-01 54.175.222.189:80 check
-    server 493999-web-02 100.27.10.70:80 check
+    server 493999-web-02 54.157.184.160:80 check
 
 "
 
