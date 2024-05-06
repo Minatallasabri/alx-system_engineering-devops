@@ -12,7 +12,7 @@ HTTPS pages typically use one of two secure protocols to encrypt communications 
 
 As the names suggest, the 'private' key should be kept strictly protected and should only be accessible the owner of the private key. In the case of a website, the private key remains securely ensconced on the web server. Conversely, the public key is intended to be distributed to anybody and everybody that needs to be able to decrypt information that was encrypted with the private key.
 
-# General
+# General knowledge : 
 * What is HTTPS SSL 2 main roles
 * What is the purpose encrypting traffic
 * What SSL termination means
