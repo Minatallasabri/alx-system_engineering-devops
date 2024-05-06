@@ -34,11 +34,11 @@ defaults
   timeout server 15s
   timeout http-request 10s
 
-frontend clickviral-tech-frontend
+frontend minatallasabrri-tech-frontend
     bind *:80
-    default_backend clickviral-tech-backend
+    default_backend minatallasabrri-tech-backend
 
-backend clickviral-tech-backend
+backend minatallasabrri-tech-backend
     balance roundrobin
 	server 493999-web-01 54.175.222.189:80 check
     server 493999-web-02 54.157.184.160:80 check
