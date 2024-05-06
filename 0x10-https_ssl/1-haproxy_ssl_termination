@@ -23,7 +23,7 @@ defaults
         option  httplog
         option  dontlognull
         timeout connect 5000
-          timeout client  50000
+        timeout client  50000
         timeout server  50000
         errorfile 400 /etc/haproxy/errors/400.http
         errorfile 403 /etc/haproxy/errors/403.http
@@ -40,10 +40,15 @@ frontend minatallasabrri-frontend
         http-request set-header X_Forwarded-Proto http
         default_backend minatallasabrri-backend
 
-frontend minatallasabrri-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/www.minatallasabrri.tech.pem
-        http-request set-header X-Forwarded-Proto https
-        default_backend minatallasabrri-backend
+frontend https_frontend
+    bind *:443 ssl crt /etc/haproxy/certs/minatallasabrri.tech.pem
+    mode http
+    default_backend backend_servers
+
+#frontend minatallasabrri-frontend-https
+        #bind *:443 ssl crt /etc/haproxy/certs/www.minatallasabrri.tech.pem
+        #http-request set-header X-Forwarded-Proto https
+        #default_backend minatallasabrri-backend
 
 backend minatallasabrri-tech-backend
         balance roundrobin
