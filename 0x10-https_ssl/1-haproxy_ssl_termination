@@ -40,7 +40,7 @@ frontend www-http
     redirect scheme https code 301 if !{ ssl_fc }
 
 frontend www-https
-    bind *:443 ssl crt /etc/ssl/certs/www.example.com.pem
+    bind *:443 ssl crt /etc/ssl/certs/www.minatallasabrri.tech.pem
     reqadd X-Forwarded-Proto:\ https
     default_backend www-backend
 
