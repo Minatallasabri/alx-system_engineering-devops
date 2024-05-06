@@ -41,7 +41,7 @@ frontend minatallasabrri-frontend
         default_backend minatallasabrri-backend
 
 frontend https_frontend
-    bind *:443 ssl crt /etc/haproxy/certs/minatallasabrri.tech.pem
+    bind *:443 ssl crt /etc/haproxy/certs/www.minatallasabrri.tech.pem
     mode http
     default_backend backend_servers
 
