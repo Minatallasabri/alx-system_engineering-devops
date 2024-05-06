@@ -42,7 +42,7 @@ defaults
 #--minatallasabrri.tech-params-begin--
 frontend minatallasabrri.tech-frontend
         bind *:80
-        bind *:443 ssl crt /etc/haproxy/certs/minatallasabrri.tech.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.minatallasabrri.tech.pem
         acl minatallasabrri-acl path_beg /.well-known/acme-challenge/
         http-request set-header X-Forwarded-Proto http
         # ADDITIONS
@@ -55,6 +55,6 @@ backend minatallasabrri.tech-backend
         server 493999-web-01 54.175.222.189:80 check
         server 493999-web-02 54.157.184.160:80 check
 
-backend minatallasabrri-backend
-        server minatallasabrri 127.0.0.1:54321
+backend letsencrypt-backend
+        server letsencrypt 127.0.0.1:54321
 #--minatallasabrri.tech-params-end--
