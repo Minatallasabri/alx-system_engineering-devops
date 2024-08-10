@@ -40,8 +40,8 @@ frontend minatallasabrri-tech-frontend
 
 backend minatallasabrri-tech-backend
     balance roundrobin
-	server 493999-web-01 54.175.222.189:80 check
-    server 493999-web-02 54.157.184.160:80 check
+	server 493999-web-01 54.162.82.22:80 check
+    server 493999-web-02 35.153.57.21:80 check
 
 "
 
