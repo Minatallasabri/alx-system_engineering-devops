@@ -38,5 +38,5 @@ frontend www-https
     default_backend www-backend
 
 backend www-backend
-    server web-01 54.175.222.189:80 check
-    server web-02 54.157.184.160:80 check
+    server web-01 54.162.82.22:80 check
+    server web-02 35.153.57.21:80 check
