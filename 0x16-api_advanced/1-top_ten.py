@@ -5,9 +5,11 @@ import requests
 
 def top_ten(subreddit):
   """Print the titles of the 10 hottest posts on a given subreddit."""
-  url = "https://www.reddit.get/r/{}/hot/.json".format(subreddit)  # Fixed typo in URL
+  url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)   
+
   headers = {
-      "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+      "User-Agent": "linux:reddit_api:v1.0.0   
+ (by /u/your_username)"  # Replace with your username
   }
   params = {
       "limit": 10
@@ -16,9 +18,6 @@ def top_ten(subreddit):
 
   # Check for successful response (status code 200)
   if response.status_code == 200:
-    # Uncomment the following line to print the full JSON response for debugging
-    # print(response.text)
-
     try:
       results = response.json()  # Assuming successful JSON parsing
       # Extract post titles from children list
@@ -29,7 +28,4 @@ def top_ten(subreddit):
     except (KeyError, JSONDecodeError):
       print("Error parsing JSON response.")
   else:
-    print(f"Error: {response.status_code}")  # Print specific error code
-
-# Example usage
-top_ten("learnpython")
+    print("None")  # Print None for invalid subreddits or errors
