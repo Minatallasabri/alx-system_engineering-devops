@@ -9,7 +9,7 @@ server {
     }
     root /var/www/html;
 
-    server_name 54.162.82.22
+    server_name 54.162.82.22;
 
     location /airbnb-onepage {
         proxy_pass http://0.0.0.0:5000/airbnb-onepage;
