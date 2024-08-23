@@ -14,8 +14,13 @@ def top_ten(subreddit):
     }
     response = requests.get(url, headers=headers, params=params,
                             allow_redirects=False)
-    if response.status_code == 404:
+    if response.status_code == 404: 
         print("None")
         return
-    results = response.json().get("data")
+response = requests.get(url, headers=headers, allow_redirects=False)
+print(response.text)  # Uncomment this line
+results = response.json().get("data")  # Move this line below the print
+ results = response.json().get("data")
     [print(c.get("data").get("title")) for c in results.get("children")]
+
+
