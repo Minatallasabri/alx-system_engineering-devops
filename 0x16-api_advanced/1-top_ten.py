@@ -1,31 +1,24 @@
 #!/usr/bin/python3
-"""Function to print hot posts on a given Reddit subreddit."""
+"""
+    this module contains the function top_ten
+"""
 import requests
+from sys import argv
 
 
 def top_ten(subreddit):
-  """Print the titles of the 10 hottest posts on a given subreddit."""
-  url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)   
-
-  headers = {
-      "User-Agent": "linux:reddit_api:v1.0.0   
- (by /u/your_username)"  # Replace with your username
-  }
-  params = {
-      "limit": 10
-  }
-  response = requests.get(url, headers=headers, params=params, allow_redirects=False)
-
-  # Check for successful response (status code 200)
-  if response.status_code == 200:
+    '''
+        returns the top ten posts for a given subreddit
+    '''
+    user = {'User-Agent': 'Lizzie'}
+    url = requests.get('https://www.reddit.com/r/{}/hot/.json?limit=10'
+                       .format(subreddit), headers=user).json()
     try:
-      results = response.json()  # Assuming successful JSON parsing
-      # Extract post titles from children list
-      for post in results.get("data", {}).get("children", []):
-        title = post.get("data", {}).get("title")
-        if title:
-          print(title)  # Print only titles with valid data
-    except (KeyError, JSONDecodeError):
-      print("Error parsing JSON response.")
-  else:
-    print("None")  # Print None for invalid subreddits or errors
+        for post in url.get('data').get('children'):
+            print(post.get('data').get('title'))
+    except Exception:
+        print(None)
+
+
+if __name__ == "__main__":
+    top_ten(argv[1])
